@@ -2,7 +2,7 @@ from django.conf import settings
 from django.http import (
     HttpResponseRedirect, Http404, HttpResponse)
 from django.views.generic import View
-from ipware.ip import get_client_ip
+from ipware import get_client_ip
 from pytracking.tracking import (
     get_configuration, TRACKING_PIXEL, PNG_MIME_TYPE)
 
