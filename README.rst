@@ -1,3 +1,13 @@
+About this fork
+===============
+
+This repo is a fork of `powergo/pytracking` since it's unmaintained.
+
+Tests are run against Python 3.5-3.8 and Django 1.11-3.0.
+
+.. image:: https://img.shields.io/travis/QueraTeam/pytracking.svg
+   :target: https://travis-ci.org/QueraTeam/pytracking
+
 pytracking - Email Open and Click Tracking Library
 ==================================================
 
