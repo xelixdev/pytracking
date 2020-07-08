@@ -4,7 +4,7 @@ from pytracking import (
     get_click_tracking_url_path, get_open_tracking_url_path,
     get_open_tracking_result, get_click_tracking_result)
 
-from test_pytracking import (
+from .test_pytracking import (
     DEFAULT_BASE_OPEN_TRACKING_URL, DEFAULT_BASE_CLICK_TRACKING_URL,
     DEFAULT_METADATA, DEFAULT_WEBHOOK_URL, DEFAULT_DEFAULT_METADATA,
     EXPECTED_METADATA)
@@ -41,18 +41,9 @@ DEFAULT_SETTINGS = {
     "default_metadata": DEFAULT_DEFAULT_METADATA
 }
 
-try:
-    from lxml import html  # noqa
+from lxml import html  # noqa
 
-    import pytracking.html as tracking_html
-
-    support_html = True
-except ImportError:
-    support_html = False
-
-
-pytestmark = pytest.mark.skipif(
-    not support_html, reason="HTML-support lib not installed")
+import pytracking.html as tracking_html
 
 
 def test_adapt_html_full():

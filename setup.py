@@ -13,11 +13,11 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_description = f.read()
 
 EXTRA_REQUIRES = {
-    'test': ['tox>=2.3.1', 'pytest>=2.9.2'],
-    'webhook': ['requests>=2.10.0'],
-    'html': ['lxml>=3.6.1'],
-    'crypto': ['cryptography>=1.4'],
-    'django': ['django-ipware>=1.1.5', 'django>=1.7']
+    "test": ["tox", "pytest", "pytest-django"],
+    "webhook": ["requests>=2.10.0"],
+    "html": ["lxml>=4.4.0"],
+    "crypto": ["cryptography>=2.0.0"],
+    "django": ["django-ipware>=2.0.0", "django>=1.11"]
 }
 
 ALL_REQUIRE = list(chain(*EXTRA_REQUIRES.values()))
@@ -30,7 +30,7 @@ setup(
     # Versions should comply with PEP440.  For a discussion on single-sourcing
     # the version across setup.py and the project code, see
     # https://packaging.python.org/en/latest/single_source_version.html
-    version='0.2.0',
+    version='0.3.0',
 
     description='Email open and click tracking',
     long_description=long_description,
@@ -74,14 +74,13 @@ setup(
 
     # You can just specify the packages manually here if your project is
     # simple. Or you can use find_packages().
-    packages=find_packages(),
+    packages=find_packages(".", include=("pytracking", "pytracking.*")),
 
     # List run-time dependencies here.  These will be installed by pip when
     # your project is installed. For an analysis of "install_requires" vs pip's
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
-    install_requires=[
-    ],
+    install_requires=[],
 
     # List additional groups of dependencies here (e.g. development
     # dependencies). You can install these using the following syntax,
