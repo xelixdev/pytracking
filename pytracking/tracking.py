@@ -33,7 +33,7 @@ class Configuration(object):
         include_default_metadata=False,
         encryption_bytestring_key=None,
         encoding="utf-8",
-        **kwargs,
+        **kwargs
     ):
         """
 
