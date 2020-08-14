@@ -1,20 +1,12 @@
 from lxml import html
 
-from pytracking.tracking import (
-    get_configuration, get_open_tracking_url, get_click_tracking_url)
+from pytracking.tracking import get_configuration, get_open_tracking_url, get_click_tracking_url
 
 
-DEFAULT_ATTRIBUTES = {
-    "border": "0",
-    "width": "0",
-    "height": "0",
-    "alt": ""
-}
+DEFAULT_ATTRIBUTES = {"border": "0", "width": "0", "height": "0", "alt": ""}
 
 
-def adapt_html(
-        html_text, extra_metadata, click_tracking=True, open_tracking=True,
-        configuration=None, **kwargs):
+def adapt_html(html_text, extra_metadata, click_tracking=True, open_tracking=True, configuration=None, **kwargs):
     """Changes an HTML string by replacing links (<a href...>) with tracking
     links and by adding a 1x1 transparent pixel just before the closing body
     tag.
@@ -48,8 +40,7 @@ def adapt_html(
 def _replace_links(tree, extra_metadata, configuration):
     for (element, attribute, link, pos) in tree.iterlinks():
         if element.tag == "a" and attribute == "href" and _valid_link(link):
-            new_link = get_click_tracking_url(
-                link, extra_metadata, configuration)
+            new_link = get_click_tracking_url(link, extra_metadata, configuration)
             element.attrib["href"] = new_link
 
 
@@ -60,5 +51,4 @@ def _add_tracking_pixel(tree, extra_metadata, configuration):
 
 
 def _valid_link(link):
-    return link.startswith("http://") or link.startswith("https://") or\
-        link.startswith("//")
+    return link.startswith("http://") or link.startswith("https://") or link.startswith("//")

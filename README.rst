@@ -10,6 +10,9 @@ Tests are run against Python 3.5-3.8 and Django 2.2-3.1.
 .. image:: https://img.shields.io/travis/mikicz/pytracking.svg
    :target: https://travis-ci.org/mikicz/pytracking
 
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :target: https://github.com/psf/black
+
 pytracking - Email Open and Click Tracking Library
 ==================================================
 

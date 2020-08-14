@@ -1,10 +1,8 @@
 from django.conf import settings
-from django.http import (
-    HttpResponseRedirect, Http404, HttpResponse)
+from django.http import HttpResponseRedirect, Http404, HttpResponse
 from django.views.generic import View
 from ipware import get_client_ip
-from pytracking.tracking import (
-    get_configuration, TRACKING_PIXEL, PNG_MIME_TYPE)
+from pytracking.tracking import get_configuration, TRACKING_PIXEL, PNG_MIME_TYPE
 
 
 class TrackingView(View):
@@ -58,8 +56,7 @@ class ClickTrackingView(TrackingView):
         configuration = self.get_configuration()
 
         try:
-            tracking_result = get_tracking_result(
-                request, path, False, configuration)
+            tracking_result = get_tracking_result(request, path, False, configuration)
         except Exception as e:
             self.notify_decoding_error(e, request)
             raise Http404
@@ -88,8 +85,7 @@ class OpenTrackingView(TrackingView):
         configuration = self.get_configuration()
 
         try:
-            tracking_result = get_tracking_result(
-                request, path, True, configuration)
+            tracking_result = get_tracking_result(request, path, True, configuration)
         except Exception as e:
             self.notify_decoding_error(e, request)
             raise Http404
@@ -108,10 +104,7 @@ def get_request_data(request):
     """
     user_agent = request.META.get("HTTP_USER_AGENT")
     ip = get_client_ip(request)[0]
-    return {
-        "user_agent": user_agent,
-        "user_ip": ip
-    }
+    return {"user_agent": user_agent, "user_ip": ip}
 
 
 def get_configuration_from_settings(settings_name="PYTRACKING_CONFIGURATION"):
@@ -136,5 +129,4 @@ def get_tracking_result(request, path, is_open, configuration=None, **kwargs):
     """
     configuration = get_configuration(configuration, kwargs)
     request_data = get_request_data(request)
-    return configuration.get_tracking_result(
-        path, request_data, is_open)
+    return configuration.get_tracking_result(path, request_data, is_open)

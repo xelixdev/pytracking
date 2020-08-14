@@ -13,7 +13,8 @@ except ImportError:
 
 
 TRACKING_PIXEL = base64.b64decode(
-    b'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=')  # noqa
+    b"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII="
+)  # noqa
 
 PNG_MIME_TYPE = "image/png"
 
@@ -21,14 +22,19 @@ DEFAULT_TIMEOUT_SECONDS = 5
 
 
 class Configuration(object):
-
     def __init__(
-            self, webhook_url=None,
-            webhook_timeout_seconds=DEFAULT_TIMEOUT_SECONDS,
-            include_webhook_url=False, base_open_tracking_url=None,
-            base_click_tracking_url=None, default_metadata=None,
-            include_default_metadata=False, encryption_bytestring_key=None,
-            encoding="utf-8", **kwargs):
+        self,
+        webhook_url=None,
+        webhook_timeout_seconds=DEFAULT_TIMEOUT_SECONDS,
+        include_webhook_url=False,
+        base_open_tracking_url=None,
+        base_click_tracking_url=None,
+        default_metadata=None,
+        include_default_metadata=False,
+        encryption_bytestring_key=None,
+        encoding="utf-8",
+        **kwargs,
+    ):
         """
 
         :param webhook_url: The webhook to notify when a click or open is
@@ -65,12 +71,12 @@ class Configuration(object):
         self.cache_encryption_key()
 
     def __str__(self):
-        return "<pytracking.Configuration> "\
-            "Open Tracking URL: {0} "\
-            "Click Tracking URL: {1} "\
-            "Webhook URL: {2}".format(
-                self.base_open_tracking_url, self.base_click_tracking_url,
-                self.webhook_url)
+        return (
+            "<pytracking.Configuration> "
+            "Open Tracking URL: {0} "
+            "Click Tracking URL: {1} "
+            "Webhook URL: {2}".format(self.base_open_tracking_url, self.base_click_tracking_url, self.webhook_url)
+        )
 
     def __deepcopy__(self, memo):
         new_config = Configuration()
@@ -133,11 +139,9 @@ class Configuration(object):
         json_byte_str = json.dumps(data_to_embed).encode(self.encoding)
 
         if self.encryption_key:
-            data_str = self.encryption_key.encrypt(
-                json_byte_str).decode(self.encoding)
+            data_str = self.encryption_key.encrypt(json_byte_str).decode(self.encoding)
         else:
-            data_str = base64.urlsafe_b64encode(
-                json_byte_str).decode(self.encoding)
+            data_str = base64.urlsafe_b64encode(json_byte_str).decode(self.encoding)
 
         return data_str
 
@@ -163,8 +167,7 @@ class Configuration(object):
         data_str = self.get_url_encoded_data_str(data_to_embed)
         return self.get_click_tracking_url_from_data_str(data_str)
 
-    def get_tracking_result(
-            self, encoded_url_path, request_data, is_open):
+    def get_tracking_result(self, encoded_url_path, request_data, is_open):
         """TODO
         """
         timestamp = int(time.time())
@@ -172,13 +175,9 @@ class Configuration(object):
             encoded_url_path = encoded_url_path[1:]
 
         if self.encryption_key:
-            payload = self.encryption_key.decrypt(
-                encoded_url_path.encode(self.encoding)).decode(
-                    self.encoding)
+            payload = self.encryption_key.decrypt(encoded_url_path.encode(self.encoding)).decode(self.encoding)
         else:
-            payload = base64.urlsafe_b64decode(
-                encoded_url_path.encode(self.encoding)).decode(
-                    self.encoding)
+            payload = base64.urlsafe_b64decode(encoded_url_path.encode(self.encoding)).decode(self.encoding)
         data = json.loads(payload)
 
         metadata = {}
@@ -204,25 +203,31 @@ class Configuration(object):
     def get_click_tracking_url_path(self, url):
         """TODO
         """
-        return url[len(self.base_click_tracking_url):]
+        return url[len(self.base_click_tracking_url) :]
 
     def get_open_tracking_url_path(self, url):
         """TODO
         """
-        return url[len(self.base_open_tracking_url):]
+        return url[len(self.base_open_tracking_url) :]
 
 
 TrackingResultJSON = namedtuple(
-    "TrackingResultJSON", [
-        "is_open_tracking", "is_click_tracking", "tracked_url", "webhook_url",
-        "metadata", "request_data", "timestamp"])
+    "TrackingResultJSON",
+    ["is_open_tracking", "is_click_tracking", "tracked_url", "webhook_url", "metadata", "request_data", "timestamp"],
+)
 
 
 class TrackingResult(object):
-
-    def __init__(self, is_open_tracking=False, is_click_tracking=False,
-                 tracked_url=None, webhook_url=None,
-                 metadata=None, request_data=None, timestamp=None):
+    def __init__(
+        self,
+        is_open_tracking=False,
+        is_click_tracking=False,
+        tracked_url=None,
+        webhook_url=None,
+        metadata=None,
+        request_data=None,
+        timestamp=None,
+    ):
         """
         :param is_open_tracking: If the result is about open tracking.
         :param is_click_tracking: If the result is about click tracking.
@@ -249,14 +254,19 @@ class TrackingResult(object):
         :rtype: TrackingResultJSON
         """
         return TrackingResultJSON(
-            self.is_open_tracking, self.is_click_tracking, self.tracked_url,
-            self.webhook_url, self.metadata, self.request_data, self.timestamp)
+            self.is_open_tracking,
+            self.is_click_tracking,
+            self.tracked_url,
+            self.webhook_url,
+            self.metadata,
+            self.request_data,
+            self.timestamp,
+        )
 
     def __str__(self):
-        return "<pytracking.TrackingResult> is_open_tracking: {0} "\
-            "is_click_tracking: {1} tracked_url: {2}".format(
-                self.is_open_tracking, self.is_click_tracking,
-                self.tracked_url)
+        return "<pytracking.TrackingResult> is_open_tracking: {0} " "is_click_tracking: {1} tracked_url: {2}".format(
+            self.is_open_tracking, self.is_click_tracking, self.tracked_url
+        )
 
 
 def get_configuration(configuration, kwargs):
@@ -296,8 +306,7 @@ def get_open_tracking_pixel():
     return (TRACKING_PIXEL, PNG_MIME_TYPE)
 
 
-def get_click_tracking_url(
-        url_to_track, metadata=None, configuration=None, **kwargs):
+def get_click_tracking_url(url_to_track, metadata=None, configuration=None, **kwargs):
     """Returns a tracking URL encoding the link to track, the provided
     metadata, and other information specified in the configuration or kwargs.
 
@@ -314,8 +323,7 @@ def get_click_tracking_url(
     return configuration.get_click_tracking_url(url_to_track, metadata)
 
 
-def get_click_tracking_result(
-        encoded_url_path, request_data=None, configuration=None, **kwargs):
+def get_click_tracking_result(encoded_url_path, request_data=None, configuration=None, **kwargs):
     """Get a TrackingResult instance from an encoded click tracking link.
 
     :param encoded_url_path: The part of the URL that is encoded and contains
@@ -330,17 +338,12 @@ def get_click_tracking_result(
         Configuration parameters.
     """
     configuration = get_configuration(configuration, kwargs)
-    if configuration.base_click_tracking_url and\
-            encoded_url_path.startswith(
-                configuration.base_click_tracking_url):
-        encoded_url_path = get_click_tracking_url_path(
-            encoded_url_path, configuration)
-    return configuration.get_tracking_result(
-        encoded_url_path, request_data, is_open=False)
+    if configuration.base_click_tracking_url and encoded_url_path.startswith(configuration.base_click_tracking_url):
+        encoded_url_path = get_click_tracking_url_path(encoded_url_path, configuration)
+    return configuration.get_tracking_result(encoded_url_path, request_data, is_open=False)
 
 
-def get_click_tracking_url_path(
-        url, configuration=None, **kwargs):
+def get_click_tracking_url_path(url, configuration=None, **kwargs):
     """Get a part of a URL that contains the encoded click tracking
     information. This is the part that needs to be supplied to
     get_click_tracking_result.
@@ -355,8 +358,7 @@ def get_click_tracking_url_path(
     return configuration.get_click_tracking_url_path(url)
 
 
-def get_open_tracking_result(
-        encoded_url_path, request_data=None, configuration=None, **kwargs):
+def get_open_tracking_result(encoded_url_path, request_data=None, configuration=None, **kwargs):
     """Get a TrackingResult instance from an encoded open tracking link.
 
     :param encoded_url_path: The part of the URL that is encoded and contains
@@ -371,17 +373,12 @@ def get_open_tracking_result(
         Configuration parameters.
     """
     configuration = get_configuration(configuration, kwargs)
-    if configuration.base_open_tracking_url and\
-            encoded_url_path.startswith(
-                configuration.base_open_tracking_url):
-        encoded_url_path = get_open_tracking_url_path(
-            encoded_url_path, configuration)
-    return configuration.get_tracking_result(
-        encoded_url_path, request_data, is_open=True)
+    if configuration.base_open_tracking_url and encoded_url_path.startswith(configuration.base_open_tracking_url):
+        encoded_url_path = get_open_tracking_url_path(encoded_url_path, configuration)
+    return configuration.get_tracking_result(encoded_url_path, request_data, is_open=True)
 
 
-def get_open_tracking_url_path(
-        url, configuration=None, **kwargs):
+def get_open_tracking_url_path(url, configuration=None, **kwargs):
     """Get a part of a URL that contains the encoded open tracking
     information. This is the part that needs to be supplied to
     get_open_tracking_result.
