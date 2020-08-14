@@ -1,6 +1,11 @@
 Changelog - pytracking
 ======================
 
+0.4.0 - August 14th 2020
+------------------------
+
+Dropped support for Django <2.2, Python <3.5.
+
 0.2.0 - June 6th 2017
 ---------------------
 

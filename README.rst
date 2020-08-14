@@ -1,19 +1,21 @@
 About this fork
 ===============
 
-This repo is a fork of `powergo/pytracking` since it's unmaintained.
+This repo is a fork of `powergo/pytracking` since it's unmaintained, with code used from `QueraTeam/pytracking` which
+made changes to make the code compatible with Python 3.5-3.8 and Django 1.11-3.0.
+This fork made further changes and gets released on PyPI under the name `pytracking2`.
 
-Tests are run against Python 3.5-3.8 and Django 1.11-3.0.
+Tests are run against Python 3.5-3.8 and Django 2.2-3.1.
 
-.. image:: https://img.shields.io/travis/QueraTeam/pytracking.svg
-   :target: https://travis-ci.org/QueraTeam/pytracking
+.. image:: https://img.shields.io/travis/mikicz/pytracking.svg
+   :target: https://travis-ci.org/mikicz/pytracking
 
 pytracking - Email Open and Click Tracking Library
 ==================================================
 
 :Authors:
-  Resulto Developpement Web Inc.
-:Version: 0.2.0
+  Resulto Developpement Web Inc., QueraTeam, Mikuláš Poul
+:Version: 0.4.0
 
 This library provides a set of functions that provide open and click tracking
 when sending emails. This is particularly useful if you rely on an Email
@@ -24,15 +26,12 @@ The library only provides building blocks and does not handle the actual
 sending of email or the serving of tracking pixel and links, but it comes
 pretty close to this.
 
-.. image:: https://img.shields.io/circleci/project/github/resulto/pytracking.svg
-    :target: https://circleci.com/gh/resulto-admin/pytracking
+.. image:: https://img.shields.io/pypi/v/pytracking2.svg
+    :target: https://pypi.python.org/pypi/pytracking2
 
-.. image:: https://img.shields.io/pypi/v/pytracking.svg
-    :target: https://pypi.python.org/pypi/pytracking
+.. image:: https://img.shields.io/pypi/l/pytracking2.svg
 
-.. image:: https://img.shields.io/pypi/l/pytracking.svg
-
-.. image:: https://img.shields.io/pypi/pyversions/pytracking.svg
+.. image:: https://img.shields.io/pypi/pyversions/pytracking2.svg
 
 
 .. contents:: Summary
@@ -93,8 +92,7 @@ Optional Major Features provided by pytracking
    `Encrypting Data`_ section for more information.
 
 2. HTML modification: pytracking can modify an HTML email to replace all links
-   and add a tracking pixel. See the `Modifying HTML emails to add tracking
-   links`_ section.
+   and add a tracking pixel. See the `Modifying HTML emails to add tracking links`_ section.
 
 3. Django: if you use Django to serve open and click tracking URLs, you can
    extend pytracking Django views, which already provides the redirect and
@@ -118,19 +116,19 @@ You can install pytracking using pip:
 
 ::
 
-    pip install pytracking
+    pip install pytracking2
 
 You can install specific features with extras:
 
 ::
 
-    pip install pytracking[django,crypto]
+    pip install pytracking2[django,crypto]
 
 You can also install all features:
 
 ::
 
-    pip install pytracking[all]
+    pip install pytracking2[all]
 
 
 
@@ -489,11 +487,3 @@ License
 
 This software is licensed under the `New BSD License`. See the `LICENSE` file
 in the repository for the full license text.
-
-Professional Support and Services
----------------------------------
-
-If you need professional support for pytracking, you want a bug to be quickly
-fixed or you want a feature request to be quickly implemented, Resulto can
-provide such service. Just drop us a line at `pytracking@resulto.ca
-<mailto:pytracking@resulto.ca>`_
