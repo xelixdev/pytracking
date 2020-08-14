@@ -26,7 +26,7 @@ ALL_REQUIRE = list(chain(*EXTRA_REQUIRES.values()))
 EXTRA_REQUIRES["all"] = ALL_REQUIRE
 
 setup(
-    name="pytracking",
+    name="pytracking2",
     version="0.4.0",
     description="Email open and click tracking",
     long_description=long_description,
@@ -40,6 +40,7 @@ setup(
         "Topic :: Communications :: Email",
         "Topic :: Software Development :: Libraries :: Python Modules",
         "License :: OSI Approved :: BSD License",
+        "Programming Language :: Python",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
@@ -48,9 +49,6 @@ setup(
     ],
     keywords="email open click tracking",
     packages=find_packages(".", include=("pytracking", "pytracking.*")),
-    install_requires=[],
     extras_require=EXTRA_REQUIRES,
-    package_data={},
-    data_files=[],
-    entry_points={},
+    python_requires='>=3.5',
 )
