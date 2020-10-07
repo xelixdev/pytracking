@@ -1,6 +1,11 @@
 Changelog - pytracking
 ======================
 
+0.4.1 - October 7th 2020
+------------------------
+
+Added support for Python 3.9.
+
 0.4.0 - August 14th 2020
 ------------------------
 
