@@ -5,7 +5,7 @@ This repo is a fork of `powergo/pytracking` since it's unmaintained, with code u
 made changes to make the code compatible with Python 3.5-3.8 and Django 1.11-3.0.
 This fork made further changes and gets released on PyPI under the name `pytracking2`.
 
-Tests are run against Python 3.5-3.9 and Django 2.2-3.1.
+Tests are run against Python 3.6-3.9 and Django 2.2, 3.1 and 3.2.
 
 .. image:: https://img.shields.io/travis/mikicz/pytracking.svg
    :target: https://travis-ci.org/mikicz/pytracking
