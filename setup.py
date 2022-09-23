@@ -27,7 +27,7 @@ EXTRA_REQUIRES["all"] = ALL_REQUIRE
 
 setup(
     name="pytracking2",
-    version="0.4.3",
+    version="0.4.4",
     description="Email open and click tracking",
     long_description=long_description,
     url="https://github.com/mikicz/pytracking",
@@ -42,7 +42,6 @@ setup(
         "License :: OSI Approved :: BSD License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
