@@ -5,10 +5,7 @@ This repo is a fork of `powergo/pytracking` since it's unmaintained, with code u
 made changes to make the code compatible with Python 3.5-3.10 and Django 1.11-4.0.
 This fork made further changes and gets released on PyPI under the name `pytracking2`.
 
-Tests are run against Python 3.6-3.10 and Django 2.2, 3.1, 3.2 and 4.0.
-
-.. image:: https://img.shields.io/travis/mikicz/pytracking.svg
-   :target: https://travis-ci.org/mikicz/pytracking
+Tests are run against Python 3.7-3.10 and Django 3.2, 4.0, 4.1.
 
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/psf/black
@@ -18,7 +15,7 @@ pytracking - Email Open and Click Tracking Library
 
 :Authors:
   Resulto Developpement Web Inc., QueraTeam, Mikuláš Poul
-:Version: 0.4.3
+:Version: 0.4.4
 
 This library provides a set of functions that provide open and click tracking
 when sending emails. This is particularly useful if you rely on an Email

@@ -1,0 +1,7 @@
+tox
+pytest
+pytest-django
+requests>=2.10.0
+lxml>=4.4.0
+cryptography>=2.0.0
+django-ipware>=2.0.0
