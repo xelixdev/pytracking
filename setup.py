@@ -27,7 +27,7 @@ EXTRA_REQUIRES["all"] = ALL_REQUIRE
 
 setup(
     name="pytracking2",
-    version="0.4.4",
+    version="0.4.5",
     description="Email open and click tracking",
     long_description=long_description,
     url="https://github.com/mikicz/pytracking",
@@ -46,9 +46,10 @@ setup(
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
     ],
     keywords="email open click tracking",
     packages=find_packages(".", include=("pytracking", "pytracking.*")),
     extras_require=EXTRA_REQUIRES,
-    python_requires='>=3.5',
+    python_requires='>=3.7',
 )

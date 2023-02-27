@@ -1,7 +1,12 @@
 Changelog - pytracking
 ======================
 
-0.4.4 - September 23rd 2021
+0.4.5 - February 27th 2023
+------------------------
+
+Added support for Django 4.2 and Python 3.11, drop support for old Pythons and Djangos.
+
+0.4.4 - September 23rd 2022
 ------------------------
 
 Added support for Django 4.1, drop support for old Pythons and Djangos.
