@@ -18,7 +18,7 @@ EXTRA_REQUIRES = {
     "webhook": ["requests>=2.10.0"],
     "html": ["lxml>=4.4.0"],
     "crypto": ["cryptography>=2.0.0"],
-    "django": ["django-ipware>=2.0.0", "django>=1.11"],
+    "django": ["python-ipware>=0.9.0", "django>=1.11"],
 }
 
 ALL_REQUIRE = list(chain(*EXTRA_REQUIRES.values()))
