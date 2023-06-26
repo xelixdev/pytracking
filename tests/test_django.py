@@ -20,8 +20,6 @@ from .test_pytracking import (
 
 DEFAULT_ENCODED_URL_TO_TRACK = "https://www.bob.com/hello-world/?token=value%C3%A9%C3%A9%C3%A9"
 
-import ipware  # noqa
-
 # Must call configure before importing tracking_django
 from django.conf import settings
 from django.http import Http404
