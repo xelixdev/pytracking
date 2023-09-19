@@ -15,11 +15,11 @@ jobs:
       fail-fast: false
       matrix:
         py:
+          # - "3.11" - not supported on GitHub yet
           - "3.11"
           - "3.10"
           - "3.9"
           - "3.8"
-          - "3.7"
     steps:
       - name: Setup python for test ${{ matrix.py }}
         uses: actions/setup-python@v4
