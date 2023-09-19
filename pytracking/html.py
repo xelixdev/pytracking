@@ -38,7 +38,7 @@ def adapt_html(html_text, extra_metadata, click_tracking=True, open_tracking=Tru
 
 
 def _replace_links(tree, extra_metadata, configuration):
-    for (element, attribute, link, pos) in tree.iterlinks():
+    for element, attribute, link, pos in tree.iterlinks():
         if element.tag == "a" and attribute == "href" and _valid_link(link):
             new_link = get_click_tracking_url(link, extra_metadata, configuration)
             element.attrib["href"] = new_link

@@ -33,7 +33,7 @@ class Configuration(object):
         include_default_metadata=False,
         encryption_bytestring_key=None,
         encoding="utf-8",
-        **kwargs
+        **kwargs,
     ):
         """
 
@@ -102,8 +102,7 @@ class Configuration(object):
         return new_configuration
 
     def cache_encryption_key(self):
-        """TODO
-        """
+        """TODO"""
         if self.encryption_bytestring_key:
             self.encryption_key = Fernet(self.encryption_bytestring_key)
         else:
@@ -134,8 +133,7 @@ class Configuration(object):
         return data
 
     def get_url_encoded_data_str(self, data_to_embed):
-        """TODO
-        """
+        """TODO"""
         json_byte_str = json.dumps(data_to_embed).encode(self.encoding)
 
         if self.encryption_key:
@@ -146,13 +144,11 @@ class Configuration(object):
         return data_str
 
     def get_open_tracking_url_from_data_str(self, data_str):
-        """TODO
-        """
+        """TODO"""
         return urljoin(self.base_open_tracking_url, data_str)
 
     def get_click_tracking_url_from_data_str(self, data_str):
-        """TODO
-        """
+        """TODO"""
         return urljoin(self.base_click_tracking_url, data_str)
 
     def get_open_tracking_url(self, extra_metadata):
@@ -161,15 +157,13 @@ class Configuration(object):
         return self.get_open_tracking_url_from_data_str(data_str)
 
     def get_click_tracking_url(self, url_to_track, extra_metadata):
-        """TODO
-        """
+        """TODO"""
         data_to_embed = self.get_data_to_embed(url_to_track, extra_metadata)
         data_str = self.get_url_encoded_data_str(data_to_embed)
         return self.get_click_tracking_url_from_data_str(data_str)
 
     def get_tracking_result(self, encoded_url_path, request_data, is_open):
-        """TODO
-        """
+        """TODO"""
         timestamp = int(time.time())
         if encoded_url_path.startswith("/"):
             encoded_url_path = encoded_url_path[1:]
@@ -201,13 +195,11 @@ class Configuration(object):
         )
 
     def get_click_tracking_url_path(self, url):
-        """TODO
-        """
+        """TODO"""
         return url[len(self.base_click_tracking_url) :]
 
     def get_open_tracking_url_path(self, url):
-        """TODO
-        """
+        """TODO"""
         return url[len(self.base_open_tracking_url) :]
 
 
