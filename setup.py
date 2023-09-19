@@ -51,5 +51,5 @@ setup(
     keywords="email open click tracking",
     packages=find_packages(".", include=("pytracking", "pytracking.*")),
     extras_require=EXTRA_REQUIRES,
-    python_requires='>=3.7',
+    python_requires=">=3.7",
 )
